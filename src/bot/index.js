@@ -1,6 +1,4 @@
-/**
- * Technical analysis (TA) bot
- */
+// Technical analysis (TA) bot
 
 const Trader = require('./trader')
 

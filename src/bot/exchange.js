@@ -19,7 +19,6 @@ class Exchange {
         this.$klines = new Observer()
         this.$signals = new Observer()
 
-
         this.checkApi(this.auth)
             .then(() => this.mountedExchange())
     }

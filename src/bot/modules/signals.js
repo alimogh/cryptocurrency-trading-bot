@@ -1,6 +1,4 @@
-/**
- * Compares arrays and returns buy & sell boolean
- */
+// Compares arrays and returns buy & sell boolean
 
 const trendSignal = (a, b) => {
     return {

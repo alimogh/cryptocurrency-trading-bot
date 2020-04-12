@@ -67,7 +67,8 @@ class Trader extends Exchange {
     }
 
     createSellOrder({ side = 'SELL' }, id) {
-        const order = this.orders.find(i => i.id == id)
+        let order = this.orders.find(i => i.id == id)
+        order.price = (order.price * ((1 / 100) + 1)).toFixed(this.symbolInfo.precision)
         api.rest.createOrder({ params: { symbol: this.config.symbol.toUpperCase(), price: order.price, quantity: order.quantity, side }, auth: this.auth })
             .then(() => {
                 console.log('[trader] created sell order')
@@ -104,7 +105,9 @@ class Trader extends Exchange {
         const info = (data) => {
             const infoSymbol = data.symbols.find(i => i.symbol.toLowerCase() == this.config.symbol)
             const decimalPlaces = infoSymbol.filters.find(i => i.filterType == 'MIN_NOTIONAL').avgPriceMins
-            const minQty = infoSymbol.filters.find(i => i.filterType == 'LOT_SIZE').minQty
+            const minQuantity = infoSymbol.filters.find(i => i.filterType == 'LOT_SIZE').minQty
+
+            console.log(infoSymbol)
 
             const config = {
                 pair: {
@@ -112,7 +115,8 @@ class Trader extends Exchange {
                     quoteAsset: infoSymbol.quoteAsset,
                 },
                 decimalPlaces,
-                minQuantity: parseFloat(minQty)
+                minQuantity,
+                precision: infoSymbol.quotePrecision
             }
 
             return config

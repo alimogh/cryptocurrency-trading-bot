@@ -1,7 +1,11 @@
 # cryptocurrency-trading-bot
 
 Example of a simple trading bot on nodejs with WebSockets. 
-Exchange **Binance**. Indicators used: **Bollinger Bands (BB)**, **Relative Strength Index (RSI)**, **Simple Moving Avarage (SMA)**. Add more if necessary.
+Exchange **Binance**. Indicators used (add more if necessary): 
+
+* Bollinger Bands (BBands)
+* Relative Strength Index (RSI)
+* Simple Moving Avarage (SMA)
 
 ### Denial of responsibility
 
@@ -26,7 +30,7 @@ $ yarn
 
 ```node
 $ node src/main.js
-$ npm run dev           // for development
+$ npm run dev  // for development
 ```
 
 ### [config.js](/src/config.js)
@@ -61,6 +65,10 @@ module.exports = {
     auth
 }
 ```
+
+## TODO
+
+* Create orders with a ladder
 
 ## Stay in touch
 
