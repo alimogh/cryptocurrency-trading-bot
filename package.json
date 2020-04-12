@@ -1,0 +1,32 @@
+{
+  "name": "cryptocurrency-trading-bot",
+  "version": "1.0.0",
+  "description": "Super simple bot for trading on the crypto-exchange using indicators.",
+  "main": "./src/main.js",
+  "scripts": {
+    "dev": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcius-capital/cryptocurrency-trading-bot.git"
+  },
+  "keywords": [
+    "cryptocurrency",
+    "trading-bot",
+    "binance",
+    "javascript",
+    "node",
+    "indicators"
+  ],
+  "author": "Nikita Marcius",
+  "license": "Apache License 2.0",
+  "bugs": {
+    "url": "https://github.com/marcius-capital/cryptocurrency-trading-bot/issues"
+  },
+  "homepage": "https://github.com/marcius-capital/cryptocurrency-trading-bot#readme",
+  "dependencies": {
+    "@marcius-capital/binance-api": "0.2.14",
+    "nodemon": "2.0.2",
+    "tulind": "0.8.18"
+  }
+}
