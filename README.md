@@ -1,4 +1,4 @@
-# cryptocurrency-trading-bot
+# Cryptocurrency trading bot
 
 Example of a simple trading bot on nodejs with WebSockets. 
 Exchange **Binance**. Indicators used (add more if necessary): 
@@ -42,7 +42,7 @@ const config = {
     symbol: 'btcusdt',
     interval: '5m', 
     deposit: 10, // 10%, 1/10 from depo
-    profit: 0.5, // 0.5%
+    profit: 1, // 1%
     indicators: [
         {
             symbol: 'bbands',
