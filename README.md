@@ -9,7 +9,7 @@ Exchange **Binance**. Indicators used (add more if necessary):
 
 ### Denial of responsibility
 
-Bot was created for training purposes. It's not ready for production. Use at your own risk.
+Bot was created for learning. It's not ready for production. Use at your own risk.
 
 ## Init
 
