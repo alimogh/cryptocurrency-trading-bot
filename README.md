@@ -9,7 +9,7 @@ Exchange **Binance**. Indicators used (add more if necessary):
 
 ### Denial of responsibility
 
-This repository was created with the aim of demonstrating. Use at your own risk.
+Bot was created for training purposes. It's not ready for production. Use at your own risk.
 
 ## Init
 
