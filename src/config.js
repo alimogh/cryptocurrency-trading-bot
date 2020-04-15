@@ -1,7 +1,7 @@
 const config = {
     symbol: 'btcusdt',
-    interval: '5m',
-    deposit: 10, // 10%, 1/10 from deposit
+    interval: '30m',
+    deposit: 10, // 10%; 1/10 of deposit
     profit: 1, // 1%
     indicators: [
         {

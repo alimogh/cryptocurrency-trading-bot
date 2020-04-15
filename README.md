@@ -1,11 +1,13 @@
 # Cryptocurrency trading bot
 
 Example of a simple trading bot on nodejs with WebSockets. 
-Exchange **Binance**. Indicators used (add more if necessary): 
+Exchange **Binance**. Indicators used (add more if necessary).
 
 * Bollinger Bands (BBands)
 * Relative Strength Index (RSI)
 * Simple Moving Avarage (SMA)
+
+Bot will open a position with indicators and close with profit +1% (can change in config).
 
 ### Denial of responsibility
 
@@ -40,7 +42,7 @@ Set up ur options.
 ```javascript
 const config = {
     symbol: 'btcusdt',
-    interval: '5m', 
+    interval: '30m', 
     deposit: 10, // 10%, 1/10 from depo
     profit: 1, // 1%
     indicators: [
@@ -68,11 +70,13 @@ module.exports = {
 
 ## TODO
 
-* Create orders with a ladder
+* ~~Trading bot~~
+* Open positions with a ladder orders
+* Backtesting
 
 ## Stay in touch
 
-Feel free to ask questions.
+Feel free to ask questions 😊
 
+* Reddit: https://reddit.com/r/MarciusCapital
 * Discord: https://discordapp.com/invite/DaWfrPx
-* Telegram: https://t.me/joinchat/G5DV0xUO-pvjEmoWc7dBUg

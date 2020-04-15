@@ -9,7 +9,7 @@ class Trader extends Exchange {
 
         this.orders = [] // Bufer open order
         this.balance = []
-        this.symbolInfo = {}
+        this.symbolInfo = {} // basic requirements of the market
 
         // Observers
         this.$userData = new Observer()
@@ -18,7 +18,7 @@ class Trader extends Exchange {
     }
 
     async mountedTrader() {
-        // Init trader
+        // Init trader data
         const symbolInfo = this.symbolInfo = await this.getSymbolInfo()
         this.balance = await this.getBalance(symbolInfo.pair)
         this.orders = await this.getOrders()
@@ -26,7 +26,7 @@ class Trader extends Exchange {
 
         // Subscribe on signals for open a BUY position
         this.$signals.subscribe(signals => {
-            // When trader data ready, buy signal and 0 open orders
+            // Will open position when trader data is ready, is buy signal and none open orders
             if (this.onTraderReady() && signals.buy && this.orders.length == 0) {
                 this.createOrder()
             }
@@ -87,8 +87,8 @@ class Trader extends Exchange {
     }
 
     /**
-     * STREAM: User data. Returns a lot of data, it is important to separate them
-     * https://github.com/binance-exchange/binance-official-api-docs/blob/master/user-data-stream.md
+     * Stream user data. Returns a lot of data about balance, orders etc.
+     * @docs https://github.com/binance-exchange/binance-official-api-docs/blob/master/user-data-stream.md
      */
 
     getUserData() {
@@ -97,8 +97,8 @@ class Trader extends Exchange {
 
     /**
      * Symbol information
-     * decimalPlaces - cropping amount when placing an order
-     * @Results { pair: {baseAsset: 'BTC', quoteAsset: 'USDT'}, decimalPlaces: 5,  minQuantity: 0.000001 }
+     * "decimalPlaces" - cropping amount when placing an order
+     * @returns {object} => { pair: {baseAsset: 'BTC', quoteAsset: 'USDT'}, decimalPlaces: 5,  minQuantity: 0.000001 }
      */
 
     getSymbolInfo() {
@@ -129,7 +129,7 @@ class Trader extends Exchange {
 
 
     /**
-     * Ready: symbol info, balance
+     * On ready trader class (symbol info, balance)
      * @returns {boolean}
      */
     onTraderReady() {

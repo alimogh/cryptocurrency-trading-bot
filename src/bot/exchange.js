@@ -19,7 +19,7 @@ class Exchange {
         this.$klines = new Observer()
         this.$signals = new Observer()
 
-        this.checkApi(this.auth)
+        this.checkApi(this.auth) // Validate API keys
             .then(() => this.mountedExchange())
     }
 
@@ -40,13 +40,13 @@ class Exchange {
     stop() {
         console.log('[Bot] stoped')
         // api.stream.close.kline({ symbol: this.config.symbol })
-        //  this.$klines.unsubscribe()
-        //  this.$signals.unsubscribe()
+        // this.$klines.unsubscribe()
+        // this.$signals.unsubscribe()
     }
 
     /**
-     * REST: Request klines
-     * @returns [{ open: 0.1, high: 0.1, low: 0.1, close: 0.1 }, ... ]
+     * Rest request - klines
+     * @returns {array} => [{ open: 0.1, high: 0.1, low: 0.1, close: 0.1 }, ... ]
      */
 
     getKlines(symbol, interval) {
@@ -54,8 +54,8 @@ class Exchange {
     }
 
     /**
-    * STREAM: Request kline
-    * @returns { open: 0.1, high: 0.1, low: 0.1, close: 0.1 }
+    * Stream request - kline
+    * @returns {object} => { open: 0.1, high: 0.1, low: 0.1, close: 0.1 }
     */
 
     getKline(symbol, interval) {
@@ -64,7 +64,7 @@ class Exchange {
 
     /**
      * Transform data to the appropriate format
-     * @returns {open: [0.01, ... ], close: [0.05, ... ], high: [0.01, ...], low: [0.01, ...] }
+     * @returns {object} => {open: [0.01, ... ], close: [0.05, ... ], high: [0.01, ...], low: [0.01, ...] }
      */
 
     updateKlines(kline) {
@@ -86,7 +86,7 @@ class Exchange {
 
     /**
 	 * Get output data of indicators that are used in the config
-	 * @returns { bbands: {lower: [], middle: [], close: []}, rsi: [] }
+	 * @returns {object} => { bbands: {lower: [], middle: [], close: []}, rsi: [] }
 	 */
 
     getIndicators(klines, indicatorsConfig) {
@@ -98,7 +98,7 @@ class Exchange {
 
     /**
      * Compare klines data with indicators
-     * @returns {buy: false, sell: false}
+     * @returns {object} => {buy: false, sell: false}
      */
 
     getSignals(values, indicators) {
@@ -116,11 +116,10 @@ class Exchange {
 
     /**
      * Check API, return TRUE or ERR
-     * @param {object} auth 
-     * @results {boolean} Error: -2014: API-key format invalid.
+     * @returns {boolean|string} => true | Error: -2014: API-key format invalid.
      */
 
-    checkApi(auth) {
+    checkApi(auth = {}) {
         return api.rest.account({ auth })
             .then(() => true)
             .catch(err => {
